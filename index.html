@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Site informativo da Sede Regional Serra da Maratona SBC de Programação 2026.">
+  <title>Maratona SBC 2026 - Sede Regional Serra</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --surface-soft: #edf4ff;
+      --primary: #123b74;
+      --primary-2: #0d6efd;
+      --accent: #f5b301;
+      --text: #1f2937;
+      --muted: #5f6b7a;
+      --border: #d8e0ec;
+      --shadow: 0 18px 45px rgba(18, 59, 116, 0.12);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    a { color: var(--primary-2); }
+
+    a:hover { color: var(--primary); }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 1rem;
+      background: var(--primary);
+      color: #fff;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      z-index: 1000;
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    header.hero {
+      background:
+        radial-gradient(circle at 15% 15%, rgba(245, 179, 1, .28), transparent 25%),
+        linear-gradient(135deg, #0b2b55 0%, #123b74 52%, #0d6efd 100%);
+      color: #fff;
+      padding: 2rem 1rem 3.25rem;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      font-weight: 800;
+      letter-spacing: .02em;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .16);
+      border: 1px solid rgba(255, 255, 255, .32);
+      font-weight: 900;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: .5rem .95rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav a {
+      color: rgba(255, 255, 255, .94);
+      text-decoration: none;
+      font-weight: 650;
+      font-size: .96rem;
+    }
+
+    nav a:hover { color: #fff; text-decoration: underline; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(280px, .75fr);
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 750;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-size: .8rem;
+      color: #ffe9a5;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 3px;
+      border-radius: 99px;
+      background: var(--accent);
+    }
+
+    h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.2rem, 4vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.04em;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      margin: 0 0 1.2rem;
+      color: rgba(255, 255, 255, .9);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .85rem;
+      margin-top: 1.8rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      padding: .8rem 1rem;
+      border-radius: 999px;
+      font-weight: 800;
+      text-decoration: none;
+      border: 1px solid transparent;
+    }
+
+    .button.primary { background: #fff; color: var(--primary); }
+    .button.secondary { color: #fff; border-color: rgba(255, 255, 255, .5); }
+
+    .info-card {
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .info-card h2 {
+      margin: 0 0 .75rem;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    .facts {
+      display: grid;
+      gap: .75rem;
+      margin-top: 1rem;
+    }
+
+    .fact {
+      padding: .85rem;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .fact strong { display: block; color: #fff; }
+    .fact span { color: rgba(255, 255, 255, .83); }
+
+    main { margin-top: -1.5rem; padding-bottom: 4rem; }
+
+    section.card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.15rem, 2.8vw, 2rem);
+      margin: 1.25rem auto;
+    }
+
+    .section-title {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: clamp(1.45rem, 2.5vw, 2.2rem);
+      line-height: 1.15;
+    }
+
+    .lead { font-size: 1.06rem; color: var(--muted); }
+
+    .notice {
+      border-left: 6px solid var(--accent);
+      background: #fff8df;
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem;
+      background: linear-gradient(180deg, #fff, #f9fbff);
+    }
+
+    .mini-card h3 {
+      margin: 0 0 .4rem;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .mini-card p { margin: 0; color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .date-card {
+      padding: 1rem;
+      border-radius: 16px;
+      background: var(--surface-soft);
+      border: 1px solid #cfdef4;
+    }
+
+    .date-card .date {
+      display: block;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .date-card .label { color: var(--muted); }
+
+    ul.checklist {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul.checklist li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin: .6rem 0;
+    }
+
+    ul.checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #0f7b46;
+      font-weight: 900;
+    }
+
+    .table-wrapper { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: .75rem;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th { background: var(--primary); color: #fff; }
+    tr:nth-child(even) td { background: #f7faff; }
+
+    .map-frame {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 16px;
+      box-shadow: 0 12px 28px rgba(18, 59, 116, .12);
+    }
+
+    .map-caption {
+      margin-top: .75rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    details {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: .85rem 1rem;
+      background: #fff;
+      margin: .75rem 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    details p { color: var(--muted); }
+
+    .link-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .link-list a {
+      display: block;
+      padding: .9rem 1rem;
+      background: #f8fbff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 750;
+    }
+
+    footer {
+      padding: 2rem 1rem;
+      background: #0b2b55;
+      color: rgba(255, 255, 255, .84);
+    }
+
+    footer a { color: #fff; }
+
+    @media (max-width: 860px) {
+      .topbar { align-items: flex-start; flex-direction: column; margin-bottom: 2rem; }
+      nav ul { justify-content: flex-start; }
+      .hero-grid, .grid-2, .grid-3, .timeline, .link-list { grid-template-columns: 1fr; }
+      .hero { padding-bottom: 2.5rem; }
+      .map-frame { height: 360px; }
+    }
+
+    @media print {
+      header.hero, nav, footer, .hero-actions { background: none !important; color: #000 !important; }
+      body { background: #fff; }
+      section.card { box-shadow: none; break-inside: avoid; }
+      .button { border: 1px solid #000; color: #000 !important; }
+      .map-frame { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
+
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand" aria-label="Sede Regional Serra">
+          <span class="brand-mark">SBC</span>
+          <span>Sede Regional Serra</span>
+        </div>
+        <nav aria-label="Navegação principal">
+          <ul>
+            <li><a href="#datas">Datas</a></li>
+            <li><a href="#inscricao">Inscrição</a></li>
+            <li><a href="#requisitos">Requisitos</a></li>
+            <li><a href="#local">Local</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Maratona SBC de Programação 2026</div>
+          <h1>Sede Regional Serra</h1>
+          <p>
+            Página informativa para técnicos, instituições e estudantes que participarão
+            da Primeira Fase da Maratona SBC de Programação 2026 na região atendida
+            pela sede Serra.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#inscricao">Como inscrever o time</a>
+            <a class="button secondary" href="#local">Ver localização</a>
+          </div>
+        </div>
+
+        <aside class="info-card" aria-label="Informações rápidas">
+          <h2>Informações rápidas</h2>
+          <div class="facts">
+            <div class="fact">
+              <strong>Primeira Fase</strong>
+              <span>29 de agosto de 2026</span>
+            </div>
+            <div class="fact">
+              <strong>Final Brasileira</strong>
+              <span>5 a 8 de novembro de 2026, em Uberlândia - MG</span>
+            </div>
+            <div class="fact">
+              <strong>Local da sede</strong>
+              <span>Ifes - Campus Serra</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container">
+    <section class="card" aria-labelledby="aviso-title">
+      <h2 id="aviso-title" class="section-title">Aviso importante</h2>
+      <div class="notice">
+        <p>
+          Esta página reúne orientações locais da Sede Regional Serra. Ela não substitui
+          as regras oficiais da Maratona SBC de Programação, do ICPC ou as orientações
+          publicadas pela organização nacional. Em caso de divergência, prevalecem as
+          informações oficiais.
+        </p>
+      </div>
+    </section>
+
+    <section id="datas" class="card" aria-labelledby="datas-title">
+      <h2 id="datas-title" class="section-title">Datas principais</h2>
+      <p class="lead">Acompanhe os prazos oficiais e as atualizações da organização nacional.</p>
+      <div class="timeline">
+        <div class="date-card">
+          <span class="date">20/7</span>
+          <span class="label">Fim do período com menor taxa de inscrição para times regulares.</span>
+        </div>
+        <div class="date-card">
+          <span class="date">10/8</span>
+          <span class="label">Fim do segundo período de pagamento para times regulares.</span>
+        </div>
+        <div class="date-card">
+          <span class="date">29/8</span>
+          <span class="label">Primeira Fase da Maratona SBC de Programação 2026.</span>
+        </div>
+        <div class="date-card">
+          <span class="date">5-8/11</span>
+          <span class="label">Final Brasileira, em Uberlândia - MG.</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="inscricao" class="card" aria-labelledby="inscricao-title">
+      <h2 id="inscricao-title" class="section-title">Inscrição dos times</h2>
+      <div class="grid-2">
+        <div>
+          <p>
+            A inscrição do time é responsabilidade do técnico. O processo envolve dois passos,
+            que podem ser realizados em qualquer ordem:
+          </p>
+          <ul class="checklist">
+            <li>cadastrar o time no site do ICPC, na competição <strong>South America Brazil First Phase</strong>;</li>
+            <li>providenciar o pagamento da taxa de inscrição no sistema <strong>ECOS da SBC</strong>;</li>
+            <li>verificar se o status do time mudou de <strong>pending</strong> para <strong>accepted</strong>.</li>
+          </ul>
+        </div>
+        <div class="mini-card">
+          <h3>Orientação para técnicos</h3>
+          <p>
+            Guarde os dados dos competidores e do reserva, confira a elegibilidade de todos
+            e acompanhe o status da inscrição no site do ICPC. Caso o status não mude para
+            accepted após o cadastro e o pagamento, entre em contato com a organização.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="requisitos" class="card" aria-labelledby="requisitos-title">
+      <h2 id="requisitos-title" class="section-title">Requisitos para os alunos</h2>
+      <div class="grid-3">
+        <div class="mini-card">
+          <h3>Composição</h3>
+          <p>Cada time regular possui 3 alunos competidores. O cadastro de 1 reserva é opcional.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Vínculo</h3>
+          <p>Competidores e reservas devem ser alunos regulares de graduação ou pós-graduação.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Elegibilidade</h3>
+          <p>Para 2026, o aluno deve ter nascido em 2003 ou depois, ou ter iniciado seus estudos superiores em 2022 ou depois.</p>
+        </div>
+      </div>
+      <p>
+        Também há limites de participação anterior: no máximo 2 finais mundiais e 5 regionais do ICPC.
+        Casos excepcionais devem ser tratados pelo técnico junto ao comitê de elegibilidade do ICPC.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="taxas-title">
+      <h2 id="taxas-title" class="section-title">Taxas de inscrição para times regulares</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Número de times</th>
+              <th>Instituição associada da SBC</th>
+              <th>Instituição não associada da SBC</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Até 20/7</td><td>1</td><td>R$ 192,00</td><td>R$ 240,00</td></tr>
+            <tr><td>Até 20/7</td><td>2</td><td>R$ 320,00</td><td>R$ 400,00</td></tr>
+            <tr><td>Até 20/7</td><td>3 ou mais</td><td>R$ 132,00 por time</td><td>R$ 165,00 por time</td></tr>
+            <tr><td>De 21/7 a 10/8</td><td>1</td><td>R$ 288,00</td><td>R$ 360,00</td></tr>
+            <tr><td>De 21/7 a 10/8</td><td>2</td><td>R$ 480,00</td><td>R$ 600,00</td></tr>
+            <tr><td>De 21/7 a 10/8</td><td>3 ou mais</td><td>R$ 192,00 por time</td><td>R$ 240,00 por time</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A inscrição é institucional. Para utilizar a categoria de instituição associada, o pagamento no ECOS deve ser realizado com o cadastro da própria instituição.
+      </p>
+    </section>
+
+    <section id="local" class="card" aria-labelledby="local-title">
+      <h2 id="local-title" class="section-title">Local da Sede Regional Serra</h2>
+      <div class="grid-2">
+        <div>
+          <p class="lead"><strong>Ifes - Campus Serra</strong></p>
+          <p>
+            Avenida dos Sabiás, 330<br>
+            Morada de Laranjeiras<br>
+            Serra - ES<br>
+            CEP 29166-630
+          </p>
+          <p>
+            Recomenda-se que os participantes consultem a rota com antecedência e acompanhem
+            as orientações locais sobre laboratório, horário de chegada, credenciamento e acesso
+            ao campus.
+          </p>
+          <a class="button primary" href="https://www.openstreetmap.org/?mlat=-20.1986&amp;mlon=-40.2172#map=17/-20.1986/-40.2172" target="_blank" rel="noopener noreferrer">
+            Abrir mapa maior
+          </a>
+        </div>
+        <div>
+          <iframe
+            class="map-frame"
+            title="Mapa do Ifes Campus Serra no OpenStreetMap"
+            loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-40.2230%2C-20.2035%2C-40.2110%2C-20.1935&amp;layer=mapnik&amp;marker=-20.1986%2C-40.2172">
+          </iframe>
+          <p class="map-caption">
+            Mapa baseado no OpenStreetMap. O marcador indica a região do Ifes - Campus Serra; ajuste fino pode ser feito posteriormente, se necessário.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="ambiente-title">
+      <h2 id="ambiente-title" class="section-title">Ambiente de prova</h2>
+      <ul class="checklist">
+        <li>A Primeira Fase é realizada presencialmente nas sedes.</li>
+        <li>A prova tem duração de 5 horas.</li>
+        <li>Na Primeira Fase, os problemas são apresentados em português.</li>
+        <li>As linguagens disponíveis incluem C, C++, Python, Java ou Kotlin, conforme a instalação definida pela organização.</li>
+        <li>Não é permitido o uso de material digital, acesso à Internet ou aparelhos eletrônicos durante a prova.</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="card" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="section-title">Perguntas frequentes</h2>
+
+      <details>
+        <summary>O aluno precisa ter nascido em 2003 ou depois?</summary>
+        <p>Não necessariamente. Para 2026, o aluno pode participar se nasceu em 2003 ou depois, ou se iniciou seus estudos superiores em 2022 ou depois.</p>
+      </details>
+
+      <details>
+        <summary>O time pode ter reserva?</summary>
+        <p>Sim. O time pode cadastrar 1 reserva. O reserva também precisa satisfazer as regras de elegibilidade.</p>
+      </details>
+
+      <details>
+        <summary>Quem faz a inscrição do time?</summary>
+        <p>O técnico é o representante oficial do time e é responsável pela inscrição junto à organização.</p>
+      </details>
+
+      <details>
+        <summary>O técnico precisa estar presente durante a prova?</summary>
+        <p>A presença do técnico durante a competição não é obrigatória. O técnico pode indicar um dos competidores como representante da equipe.</p>
+      </details>
+
+      <details>
+        <summary>O time pode competir com menos de três alunos?</summary>
+        <p>Um time que compareça com menos de três competidores não pode se qualificar para fases posteriores.</p>
+      </details>
+
+      <details>
+        <summary>Pode usar Internet durante a prova?</summary>
+        <p>Não. As regras da competição proíbem acesso à Internet, material digital e aparelhos eletrônicos durante a prova.</p>
+      </details>
+    </section>
+
+    <section class="card" aria-labelledby="links-title">
+      <h2 id="links-title" class="section-title">Links úteis</h2>
+      <ul class="link-list">
+        <li><a href="https://maratona.sbc.org.br/" target="_blank" rel="noopener noreferrer">Site oficial da Maratona SBC</a></li>
+        <li><a href="https://maratona.sbc.org.br/inscricoes.html" target="_blank" rel="noopener noreferrer">Página oficial de inscrições</a></li>
+        <li><a href="https://maratona.sbc.org.br/sobre/regras.html" target="_blank" rel="noopener noreferrer">Regras da Maratona SBC 2026</a></li>
+        <li><a href="https://icpc.global/" target="_blank" rel="noopener noreferrer">Site do ICPC</a></li>
+        <li><a href="https://centraldesistemas.sbc.org.br/ecos/" target="_blank" rel="noopener noreferrer">ECOS da SBC</a></li>
+        <li><a href="https://serra.ifes.edu.br/" target="_blank" rel="noopener noreferrer">Ifes - Campus Serra</a></li>
+      </ul>
+    </section>
+
+    <section id="contato" class="card" aria-labelledby="contato-title">
+      <h2 id="contato-title" class="section-title">Contato da Sede Regional Serra</h2>
+      <p>
+        Diretor da sede: <strong>Prof. Jefferson O. Andrade</strong><br>
+        Instituição: <strong>Instituto Federal do Espírito Santo - Campus Serra</strong>
+      </p>
+      <p>
+        Para dúvidas sobre inscrição de times, elegibilidade ou informações locais da sede,
+        entre em contato com a coordenação local. Recomenda-se que os técnicos consultem
+        primeiro as páginas oficiais da Maratona SBC e do ICPC.
+      </p>
+      <p>
+        <strong>Observação:</strong> atualize esta seção com o e-mail institucional que será usado oficialmente para a sede.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        Maratona SBC de Programação 2026 - Sede Regional Serra. Página informativa mantida pela coordenação local da sede.
+      </p>
+      <p>
+        Última atualização: 18 de junho de 2026. Dados da competição devem ser confirmados nas páginas oficiais da Maratona SBC e do ICPC.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
