@@ -116,12 +116,12 @@ A página de inscrições da Maratona SBC 2026 apresenta os seguintes valores pa
   stroke: 0.5pt,
   fill: (x, y) => if y == 0 { blue } else if calc.rem(y, 2) == 0 { rgb("f7faff") } else { white },
   text(fill: white, weight: "bold")[Período], text(fill: white, weight: "bold")[Número de times], text(fill: white, weight: "bold")[Instituição associada da SBC], text(fill: white, weight: "bold")[Instituição não associada da SBC],
-  [Até 20/7], [1], [R$ 192,00], [R$ 240,00],
-  [Até 20/7], [2], [R$ 320,00], [R$ 400,00],
-  [Até 20/7], [3 ou mais], [R$ 132,00 por time], [R$ 165,00 por time],
-  [De 21/7 a 10/8], [1], [R$ 288,00], [R$ 360,00],
-  [De 21/7 a 10/8], [2], [R$ 480,00], [R$ 600,00],
-  [De 21/7 a 10/8], [3 ou mais], [R$ 192,00 por time], [R$ 240,00 por time],
+  [Até 20/7], [1], [R\$ 192,00], [R\$ 240,00],
+  [Até 20/7], [2], [R\$ 320,00], [R\$ 400,00],
+  [Até 20/7], [3 ou mais], [R\$ 132,00 por time], [R\$ 165,00 por time],
+  [De 21/7 a 10/8], [1], [R\$ 288,00], [R\$ 360,00],
+  [De 21/7 a 10/8], [2], [R\$ 480,00], [R\$ 600,00],
+  [De 21/7 a 10/8], [3 ou mais], [R\$ 192,00 por time], [R\$ 240,00 por time],
 )
 
 A inscrição é institucional. Para utilizar a categoria de instituição associada da SBC, o pagamento no ECOS deve ser feito com o cadastro da própria instituição.
@@ -134,8 +134,8 @@ Em caso de desistência de participação até 23 de agosto, pode ser solicitada
 
 Em 2026, haverá apenas café com leite online na Primeira Fase. A taxa informada pela organização é:
 
-- até 20/7: R$ 150,00;
-- de 21/7 a 21/8: R$ 230,00.
+- até 20/7: R\$ 150,00;
+- de 21/7 a 21/8: R\$ 230,00.
 
 A categoria café com leite segue orientações próprias da organização e deve ser tratada separadamente da inscrição dos times regulares.
 
